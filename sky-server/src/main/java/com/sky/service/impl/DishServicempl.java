@@ -2,12 +2,14 @@ package com.sky.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.sky.annotation.Autofill;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.entity.DishFlavor;
+import com.sky.enumeration.OperationType;
 import com.sky.exception.DeletionNotAllowedException;
 import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
@@ -85,12 +87,6 @@ public class DishServicempl implements DishService {
             throw new DeletionNotAllowedException(MessageConstant.DISH_BE_RELATED_BY_SETMEAL);
         }
 
-        //删除菜品数据
-//        for (Long id : ids) {
-//            dishMapper.deleteById(id);
-//            //删除口味数据
-//            dishFlavorMapper.deleteByDishId(id);
-//        }
         dishMapper.deleteByIds(ids);
 
         dishFlavorMapper.deleteByDishIds(ids);
@@ -150,5 +146,13 @@ public class DishServicempl implements DishService {
                 .status(StatusConstant.ENABLE)
                 .build();
         return dishMapper.list(dish);
+    }
+
+    @Override
+    public void changeStatus(Integer status, Long id){
+        Dish dish = new Dish();
+        dish.setId(id);
+        dish.setStatus(status);
+        dishMapper.changeStatus(dish);
     }
 }
