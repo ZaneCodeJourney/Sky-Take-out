@@ -62,10 +62,15 @@ public class OrderController {
         return Result.success(orderVO);
     }
 
+    /**
+     * 接单
+     *
+     * @return
+     */
     @PutMapping("/confirm")
     @ApiOperation("接单")
-    public Result confirm(@RequestBody OrdersConfirmDTO ordersConfirmDTO){
-        orderService.confim(ordersConfirmDTO);
+    public Result confirm(@RequestBody OrdersConfirmDTO ordersConfirmDTO) {
+        orderService.confirm(ordersConfirmDTO);
         return Result.success();
     }
 }

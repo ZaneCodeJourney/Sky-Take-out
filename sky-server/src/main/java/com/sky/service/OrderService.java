@@ -61,5 +61,5 @@ public interface OrderService {
      *
      * @param ordersConfirmDTO
      */
-    void confim(OrdersConfirmDTO ordersConfirmDTO);
+    void confirm(OrdersConfirmDTO ordersConfirmDTO);
 }

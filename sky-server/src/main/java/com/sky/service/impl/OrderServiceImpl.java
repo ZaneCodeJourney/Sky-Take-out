@@ -347,8 +347,11 @@ public class OrderServiceImpl implements OrderService {
      *
      * @param ordersConfirmDTO
      */
-    public void confim(OrdersConfirmDTO ordersConfirmDTO) {
-        Orders orders = Orders.builder().id(ordersConfirmDTO.getId()).status(Orders.CONFIRMED).build();
+    public void confirm(OrdersConfirmDTO ordersConfirmDTO) {
+        Orders orders = Orders.builder()
+                .id(ordersConfirmDTO.getId())
+                .status(Orders.CONFIRMED)
+                .build();
 
         orderMapper.update(orders);
     }
