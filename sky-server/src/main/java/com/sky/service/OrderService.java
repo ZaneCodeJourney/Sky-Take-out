@@ -61,4 +61,6 @@ public interface OrderService {
     void confirm(OrdersConfirmDTO ordersConfirmDTO);
 
     void rejection(OrdersRejectionDTO ordersRejectionDTO) throws Exception;
+
+    void cancel(OrdersCancelDTO ordersCancelDTO) throws Exception;
 }
